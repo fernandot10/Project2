@@ -1,13 +1,17 @@
+const path = require('path');
 const express = require('express');
-const routes = require('./routes');
-const session = require('expression-session');
+const routes = require('./controller');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
 // import sequelize connection
 const sequelize = require('./config/connection');
-const sequelizeStore = require('connect-session-sequelize')(session.store);
+const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 
 const sess = {
     secret: 'secret123',
