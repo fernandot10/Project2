@@ -1,4 +1,4 @@
-const {Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const { DataTypes } = require("sequelize");
 
 
@@ -24,9 +24,18 @@ Album.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        date_release: {
+        dateRelease: {
             type: DataTypes.DATE,
-            allowNull:false,
-        },
+            allowNull: false
+        }
+    },
+
+    {
+        sequelize,
+        timestamps: false,
+        underscored: true,
+        modelName: 'album'
     }
 );
+
+module.exports = Album;
