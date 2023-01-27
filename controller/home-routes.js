@@ -26,6 +26,15 @@ router.get('/dashboard', withAuth, (req, res) => {
   }
 });
 
+// GET route for showing all reviews 
+router.get('/reviews', withAuth, (req, res) => {
+  try {
+    // variable for getting all reviews in general
+
+    // rendering reviews on page
+  }
+})
+
 // GET route for showing a specific review
 router.get('/reviews/:id', withAuth, (req, res) => {
   try {
