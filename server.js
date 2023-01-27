@@ -1,15 +1,17 @@
+const path = require('path');
 const express = require('express');
-
-const Album = require('');
-const routes = require('./routes');
-const session = require('expression-session');
+const routes = require('./controller');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
 // import sequelize connection
 const sequelize = require('./config/connection');
-const sequelizeStore = require('connect-session-sequelize')(session.store);
+const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 
 const sess = {
     secret: 'secret123',
@@ -31,17 +33,3 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
-// sync sequelize models to the database, then turn on the server
-sequelize.sync({force: false}).then(function(){
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
-});
-
-// sync sequelize models to the database, then turn on the server
-sequelize.sync({force: false}).then(function(){
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
-});
