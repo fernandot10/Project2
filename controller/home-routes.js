@@ -58,6 +58,15 @@ router.post('/reviews', withAuth, (req, res) => {
   }
 });
 
+// DELETE route for deleting a review
+router.delete('/reviews/:id', (req, res) => {
+  // use .destroy
+
+  //if no id found gives 404
+
+  // status 200 if successful
+})
+
 // Redirects users if already logged in
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
