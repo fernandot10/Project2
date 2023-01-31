@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-class Album extends Model { }
+class Review extends Model { }
 
-Album.init(
+Review.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,20 +12,20 @@ Album.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
-            type: DataTypes.STRING,
+        AlbumId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        artist: {
-            type: DataTypes.STRING,
+        UserId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        genre: {
-            type: DataTypes.STRING,
+        rating: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        dateRelease: {
-            type: DataTypes.DATE,
+        comment: {
+            type: DataTypes.TEXT,
             allowNull: false
         }
     },
@@ -34,8 +34,8 @@ Album.init(
         sequelize,
         timestamps: false,
         underscored: true,
-        modelName: 'album'
+        modelName: 'review'
     }
 );
 
-module.exports = Album;
+module.exports = Review;
