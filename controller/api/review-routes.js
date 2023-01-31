@@ -1,10 +1,13 @@
+const router = require('express').Router();
+const { Album, Reviews } = require('../models/');
+const withAuth = require('../utils/auth');
 
 // GET route for showing all reviews 
 router.get('/reviews', withAuth, async (req, res) => {
     try {
       // variable for getting all reviews in general
       const allReviews = await Reviews.findAll({
-        include: [{ model: Albums }],
+        include: [{ model: Album }],
       });
   
       const reviews = allReviews.map((project) => project.get({ plain: true }));
@@ -19,7 +22,7 @@ router.get('/reviews', withAuth, async (req, res) => {
   router.get('/reviews/:id', withAuth, async (req, res) => {
     try {
       const allReviews = await Reviews.findByPk(req.params.id, {
-        include: [{ model: Albums }],
+        include: [{ model: Album }],
       });
   
       // serialize data so templates can read
@@ -49,6 +52,8 @@ router.get('/reviews', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // PUT route for editing a review
   
   // DELETE route for deleting a review
   router.delete('/reviews/:id', withAuth, async (req, res) => {
