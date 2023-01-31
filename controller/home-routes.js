@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../../../UNCC-VIRT-FSF-PT-10-2022-U-LOLC/14-MVC/01-Activities/22-Stu_MVC-Review/Solved/models');
-const Album = require('../models/Album');
+const { Album, Reviews, Users } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // GET Route for Homepage
