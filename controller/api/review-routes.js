@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Album, Reviews } = require('../models/');
-const withAuth = require('../utils/auth');
+const { Album, Reviews } = require('../../models/');
+const withAuth = require('../../utils/auth');
 
 // GET route for showing all reviews 
 router.get('/', withAuth, async (req, res) => {
