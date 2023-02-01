@@ -2,3 +2,12 @@
     width:240px;
     height:260px;
   }
+
+#email-login {
+    margin-left: 6.5px;
+    margin-bottom: 5px;
+}
+
+#password-login {
+    margin-left: 10px;
+}
