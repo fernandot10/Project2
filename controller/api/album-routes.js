@@ -3,7 +3,7 @@ const { Album, Reviews } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // GET Route for showing all albums reviewed 
-router.get('/albums', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
       // variable for getting all albums reviewed from Model
       const albumsReviewed = await Album.findAll({
@@ -22,7 +22,7 @@ router.get('/albums', withAuth, async (req, res) => {
   });
   
   // GET route for a specific album & its reviews
-  router.get('/albums/:id', withAuth, async (req, res) => {
+  router.get('/:id', withAuth, async (req, res) => {
     try {
       const albumsReviewed = await Albums.findByPk(req.params.id, {
         include: [{ model: Reviews }],
@@ -37,3 +37,5 @@ router.get('/albums', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   })
+
+module.exports = router;
