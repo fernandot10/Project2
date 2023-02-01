@@ -3,7 +3,7 @@ const { Album, Reviews } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // GET route for showing all reviews 
-router.get('/reviews', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
       // variable for getting all reviews in general
       const allReviews = await Reviews.findAll({
@@ -19,7 +19,7 @@ router.get('/reviews', withAuth, async (req, res) => {
   });
   
   // GET route for showing a specific review
-  router.get('/reviews/:id', withAuth, async (req, res) => {
+  router.get('/:id', withAuth, async (req, res) => {
     try {
       const allReviews = await Reviews.findByPk(req.params.id, {
         include: [{ model: Album }],
@@ -36,7 +36,7 @@ router.get('/reviews', withAuth, async (req, res) => {
   });
   
   // POST route for creating a new review
-  router.post('/reviews', withAuth, async (req, res) => {
+  router.post('/', withAuth, async (req, res) => {
     try {
       // variable for album review data - gets data for album, then data for review
       const reviewData = await Reviews.create({
@@ -56,7 +56,7 @@ router.get('/reviews', withAuth, async (req, res) => {
   // PUT route for editing a review
   
   // DELETE route for deleting a review
-  router.delete('/reviews/:id', withAuth, async (req, res) => {
+  router.delete('/:id', withAuth, async (req, res) => {
     try {
       // use .destroy
       const reviewData = await Reviews.destroy({
