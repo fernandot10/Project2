@@ -3,6 +3,14 @@
     height:260px;
   }
 
+
   .email-login{
     margin-left: 100pt;
   }
+
+
+
+#password-login {
+    margin-left: 10px;
+}
+

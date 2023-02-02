@@ -15,8 +15,14 @@ router.post('/login', async (req, res) => {
             return;
         }
         
-        const validPassword = await userData.checkPassword(req.body.password);
-        
+        // const validPassword = await userData.checkPassword(req.body.password);
+
+        // use `bcrypt.compare()` to compare the provided password and the hashed password
+        const validPassword = await bcrypt.compare(
+          req.body.password,
+          userData.password
+        )
+
         if (!validPassword) {
             res
             .status(400)
