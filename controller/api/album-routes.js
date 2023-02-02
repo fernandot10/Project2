@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Album, Reviews } = require('../../models/');
+const { Album, Reviews } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET Route for showing all albums reviewed 
