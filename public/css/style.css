@@ -3,6 +3,17 @@
     height:260px;
   }
 
+<<<<<<< HEAD
   .email-login{
     margin-left: 100pt;
   }
+=======
+#email-login {
+    margin-left: 6.5px;
+    margin-bottom: 5px;
+}
+
+#password-login {
+    margin-left: 10px;
+}
+>>>>>>> ff917f56186414bca77817086a2d1bdb1a862dc6
