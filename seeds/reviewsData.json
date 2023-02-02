@@ -1,0 +1,20 @@
+[
+    {
+        "AlbumId": "1",
+        "UserId": "2",
+        "rating": "4",
+        "comment": "It was pretty good!"
+    },
+    {
+        "AlbumId": "2",
+        "UserId": "1",
+        "rating": "3",
+        "comment": "It was just okay!"
+    },
+    {
+        "AlbumId": "3",
+        "UserId": "3",
+        "rating": "1",
+        "comment": "I didn't like it!"
+    },
+]

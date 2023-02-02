@@ -1,32 +1,37 @@
 [
     {
         "id": "1",
-        "album": "DAMN",
+        "title": "DAMN",
         "artist": "Kendrick Lamar",
-        "genre": "Hip-hop"
+        "genre": "Hip-hop",
+        "dateRelease": "2017"
     },
     {
         "id": "2",
-        "album": "The Slow Rush",
+        "title": "The Slow Rush",
         "artist": "Tame Impala",
-        "genre": "Alternative"
+        "genre": "Alternative",
+        "dateRelease": "2018"
     },
     {
         "id": "3",
-        "album": "We Were Cowboys",
+        "title": "We Were Cowboys",
         "artist": "Kameron marlowe",
-        "genre": "Country"
+        "genre": "Country",
+        "dateRelease": "2019"
     },
     {
         "id": "4",
-        "album": "Hysteria",
+        "title": "Hysteria",
         "artist": "Def Leppard",
-        "genre": "Rock"
+        "genre": "Rock",
+        "dateRelease": "2020"
     },
     {
         "id": "5",
-        "album": "Alone At Prom",
+        "title": "Alone At Prom",
         "artist": "Tory Lanez",
-        "genre": "R&B/Soul"
+        "genre": "R&B/Soul",
+        "dateRelease": "2021"
     }
   ]
