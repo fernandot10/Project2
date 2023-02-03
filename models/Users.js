@@ -6,8 +6,8 @@ class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
-    checkUsername(loginUn) {
-        return bcrypt.compareSync(loginUn, this.username);
+    checkEmail(loginUn) {
+        return bcrypt.compareSync(loginUn, this.email);
     }
 }
 
@@ -19,7 +19,7 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
         },

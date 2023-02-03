@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
     if (email && password) {
       //Takes in email and password input values from login handlebars
       //Posts them as an object to the login and user routes
-      const response = await fetch('/api/users/', {
+      const response = await fetch('/api/users/signup', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Album } = require('../models/');
+const { Album, User } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // GET Route for Homepage
