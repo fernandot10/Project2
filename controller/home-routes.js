@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { Album, User } = require('../models/');
+
+const { Album, User  } = require('../models/');
+
 const withAuth = require('../utils/auth');
 
 // GET Route for Landing Page / Login
@@ -19,6 +21,29 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     res.render('dashboard', { 
       logged_in: req.session.logged_in });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/album/:id', async (req, res) => {
+  try {
+    const albumData = await Album.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['email'],
+        },
+      ],
+    });
+
+    const Album = albumData.get({ plain: true });
+
+    res.render('album', {
+      ...project,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
