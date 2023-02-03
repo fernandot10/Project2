@@ -7,7 +7,7 @@ router.get('/', withAuth, async (req, res) => {
   try {
     const albumData = await Album.findAll({
       limit: 10,
-      order: [['id', 'DSC']]
+      order: [['id', 'DESC']]
     });
 
     const albums = albumData.map((project) => project.get({ plain: true }));
