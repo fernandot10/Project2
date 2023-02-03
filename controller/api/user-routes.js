@@ -1,20 +1,39 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('../../models/');
+const bcrypt = require('bcrypt');
 
 // POST route for signing up
+router.post('/', async (req, res) => {
+  try {
+    const newUser = await User.create({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.userId = newUser.id;
+      req.session.email = newUser.email;
+      req.session.loggedIn = true;
+
+      res.json(newUser);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // POST route for logging in
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { username: req.body.username } });
-        
+        const userData = await User.findOne({ where: { email: req.body.email } });
+        console.log('made it this far')
         if (!userData) {
             res
             .status(400)
             .json({ message: 'Incorrect username or password, please try again' });
             return;
         }
-        
+        console.log(userData);
         // const validPassword = await userData.checkPassword(req.body.password);
 
         // use `bcrypt.compare()` to compare the provided password and the hashed password
@@ -29,10 +48,12 @@ router.post('/login', async (req, res) => {
             .json({ message: 'Incorrect username or password, please try again' });
             return;
         }
-        
+        console.log('made it further')
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
+          //Possibly need to change back to user_id and logged_in and apply to handlebars
+            req.session.userId = userData.id;
+            req.session.email = userData.email;
+            req.session.loggedIn = true;
             
             res.json({ user: userData, message: 'You are now logged in!' });
         });

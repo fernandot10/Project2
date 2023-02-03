@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Album, Reviews } = require('../../models');
+const { Album, Reviews } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 // GET Route for showing all albums reviewed 
@@ -24,7 +24,7 @@ router.get('/', withAuth, async (req, res) => {
   // GET route for a specific album & its reviews
   router.get('/:id', withAuth, async (req, res) => {
     try {
-      const albumsReviewed = await Albums.findByPk(req.params.id, {
+      const albumsReviewed = await Album.findByPk(req.params.id, {
         include: [{ model: Reviews }],
       });
   
