@@ -2,8 +2,23 @@ const router = require('express').Router();
 const { User } = require('../../models/');
 const bcrypt = require('bcrypt');
 
+// Get a list of all users
+router.get('/', async (req, res) => {
+  try {
+    const usersRegistered = await User.findAll({
+      order: [['email', 'ASC']]
+    });
+
+    const users = usersRegistered.map((project) => project.get({ plain: true }));
+
+    res.json(users)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 // POST route for signing up
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const newUser = await User.create({
       email: req.body.email,
@@ -15,8 +30,10 @@ router.post('/', async (req, res) => {
       req.session.email = newUser.email;
       req.session.loggedIn = true;
 
-      res.json(newUser);
+      res.status(200).json(newUser);
+
     });
+
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,7 +47,7 @@ router.post('/login', async (req, res) => {
         if (!userData) {
             res
             .status(400)
-            .json({ message: 'Incorrect username or password, please try again' });
+            .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
         console.log(userData);
@@ -45,7 +62,7 @@ router.post('/login', async (req, res) => {
         if (!validPassword) {
             res
             .status(400)
-            .json({ message: 'Incorrect username or password, please try again' });
+            .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
         console.log('made it further')

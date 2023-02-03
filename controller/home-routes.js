@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Album } = require('../models/');
+const { Album, User } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // GET Route for Homepage
@@ -12,7 +12,9 @@ router.get('/', withAuth, async (req, res) => {
 
     const albums = albumData.map((project) => project.get({ plain: true }));
 
-    res.render('homepage', { albums });
+    res.render('homepage', { 
+      albums,
+      logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -24,8 +26,8 @@ router.get('/login', (req, res) => {
     return;
   }
   res.render('login');
-});
 
+});
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
@@ -34,6 +36,5 @@ router.get('/signup', (req, res) => {
   }
   res.render('signup');
 });
-
 
 module.exports = router;

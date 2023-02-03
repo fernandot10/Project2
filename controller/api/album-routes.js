@@ -3,7 +3,7 @@ const { Album, Reviews } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 // GET Route for showing all albums reviewed 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       // variable for getting all albums reviewed from Model
       const albumsReviewed = await Album.findAll({
@@ -36,6 +36,6 @@ router.get('/', withAuth, async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
-  })
+  })  
 
 module.exports = router;
