@@ -3,14 +3,30 @@
     height:260px;
   }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  .email-login{
+    margin-left: 100pt;
+  }
+=======
+#email-login {
+    margin-left: 6.5px;
+    margin-bottom: 5px;
+}
+=======
 
   .email-login{
     margin-left: 100pt;
   }
 
 
+>>>>>>> 6b4050fd22575e4758fd19d37b7461d7b7320085
 
 #password-login {
     margin-left: 10px;
 }
+<<<<<<< HEAD
+>>>>>>> ff917f56186414bca77817086a2d1bdb1a862dc6
+=======
 
+>>>>>>> 6b4050fd22575e4758fd19d37b7461d7b7320085

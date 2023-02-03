@@ -6,8 +6,8 @@ class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
-    checkUsername(loginUn) {
-        return bcrypt.compareSync(loginUn, this.username);
+    checkEmail(loginUn) {
+        return bcrypt.compareSync(loginUn, this.email);
     }
 }
 

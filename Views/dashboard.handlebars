@@ -1,8 +1,8 @@
-{{#if posts.length}}
+{{#if reviews.length}}
 
 <section>
     <h2>Your Reviews</h2>
-    {{#each posts as |post|}}
+    {{#each reviews as |review|}}
     {{> dashboard-postinfo post}}
     {{/each}}
 </section>
@@ -11,4 +11,4 @@
 
 <button type="submit" class="button"><a class="link" href="/dashboard/new">+ New Review</a></button>
 
-<script src="/javascript/add-post.js"></script>
+<script src="/javascript/review.js"></script>

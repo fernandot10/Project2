@@ -1,5 +1,6 @@
 const sequelize = require('../config/connection');
 const { User, Album } = require('../models');
+
 const albumData = require('./albumData.json');
 const usersData = require('./usersData.json');
 
