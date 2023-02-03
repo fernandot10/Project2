@@ -14,10 +14,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET Route for Homepage
-router.get('/homepage', withAuth, async (req, res) => {
+// GET Route for dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    res.render('homepage', { 
+    res.render('dashboard', { 
       logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
