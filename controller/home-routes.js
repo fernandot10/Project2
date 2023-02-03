@@ -1,20 +1,52 @@
 const router = require('express').Router();
-const { Album, User } = require('../models/');
+
+const { Album, User  } = require('../models/');
+
 const withAuth = require('../utils/auth');
 
 // GET Route for Homepage
 router.get('/', withAuth, async (req, res) => {
   try {
     const albumData = await Album.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['email']
+        },
+      ],
       limit: 10,
       order: [['id', 'DESC']]
     });
 
+    // Serialize data
     const albums = albumData.map((project) => project.get({ plain: true }));
 
     res.render('homepage', { 
       albums,
       logged_in: req.session.logged_in });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/album/:id', async (req, res) => {
+  try {
+    const albumData = await Album.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['email'],
+        },
+      ],
+    });
+
+    const Album = albumData.get({ plain: true });
+
+    res.render('album', {
+      ...project,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
