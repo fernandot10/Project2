@@ -19,7 +19,7 @@ Welcome to Review4U! This web application allows you to express your thoughts on
   - Jasmine Hayes
   - Sarah Lang
   - Alyssa Maples
-  - Fernando 
+  - Fernando Trujillo
   
   ## Technologies
   - JavaScript
