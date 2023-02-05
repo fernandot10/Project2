@@ -47,7 +47,7 @@ const submitForm = async (event) => {
   const genre = document.querySelector('#genre').value.trim();
   const year = document.querySelector('#year').value.trim();
   const review = document.querySelector('#content').value.trim();
-  const cover = uploader.url(`/uploads/${title.split(' ').join('')}-${artist.split(' ').join('')}.jpg`);
+  const cover = uploader.url(`/uploads/${title.split(' ').join('')}-${artist.split(' ').join('')}.jpg`, { transformation: "thumbnail" });
 
   console.log(title, artist, genre, year, cover, review);
 
