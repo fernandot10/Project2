@@ -4,25 +4,22 @@ const { Album, User  } = require('../models/');
 
 const withAuth = require('../utils/auth');
 
-// GET Route for Homepage
-router.get('/', withAuth, async (req, res) => {
+// GET Route for Landing Page / Login
+router.get('/', async (req, res) => {
   try {
-    const albumData = await Album.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['email']
-        },
-      ],
-      limit: 10,
-      order: [['id', 'DESC']]
-    });
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    // Serialize data
-    const albums = albumData.map((project) => project.get({ plain: true }));
-
+// GET Route for Homepage
+router.get('/homepage', withAuth, async (req, res) => {
+  try {
     res.render('homepage', { 
-      albums,
       logged_in: req.session.logged_in });
 
   } catch (err) {
@@ -61,9 +58,16 @@ router.get('/login', (req, res) => {
 
 });
 
+router.get('/logout', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('logout');
+})
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/homepage');
+    res.redirect('/');
     return;
   }
   res.render('signup');
