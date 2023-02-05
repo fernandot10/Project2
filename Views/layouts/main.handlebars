@@ -19,13 +19,13 @@
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
+      text-align: ;
     }
-
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
-      height: 200px
+      height: 10px;
+      
     }
-
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
@@ -33,14 +33,12 @@
       height: 170%;
       text-align: right;
     }
-
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
-
     button {
       display: block;
       width: 160pt;
@@ -48,7 +46,6 @@
       margin-top: 20px;
       font-size: 16pt;
     }
-
     .container {
     padding: 80px 120px;
   }
@@ -62,7 +59,6 @@
   .person:hover {
     border-color: #f1f1f1;
   }
-
   .carousel-inner img {
    
     width: 60%; /* Set width to 100% */
@@ -74,19 +70,16 @@
   .carousel-caption h3 {
     color: #fff !important;
   }
-
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-
       .row.content {
         height: auto;
       }
     }
-
     @media (max-width: 600px) {
       .carousel-caption {
         display: none;
@@ -94,9 +87,6 @@
       }
     }
   </style>
-
-
-
 
 </head>
 
@@ -113,19 +103,40 @@
 
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-left">
       <li class="active">
         <li><a href="/">Home</a></li>
         <li><a href="/dashboard">UReview Dashboard</a></li>
         {{#if loggedIn}}
         <li><a id="logout" href="#">Logout</a></li>
         {{else}}
-        <li><a href="/login">Login</a></li>
+        <div class="dropdown">
+        <li><a><button>Login</button></a></li>
         {{/if}}
+        <div class="dropdown-content">
+           <div class="cards">
+    <h3 class="banner">Please login</h3>
+    <form id="login-form" class="comment-body">
+
+        <label for="email-login"></label>
+        <input type="text" placeholder="Email Address" class="comment-input" id="email-login"/>
+</div>
+<div>
+    <label for="password-login"></label>
+    <input type="text" placeholder="Password" class="comment-input" id="password-login"/>
+</div>
+<div>
+    <button href="/login" type="submit" class="button" >Login</button>
+    <a class="login-now" href="/signup">Signup</a>
+
+</div>
+    </form>
+</div>
       </ul>
     </nav>
   </div>
-
+</div>
+</div>
 
   <h1>Review4U</h1>
   </header>

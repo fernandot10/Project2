@@ -1,32 +1,76 @@
 .carousel-inner > .item > img {
-    width:240px;
-    height:260px;
-  }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-  .email-login{
-    margin-left: 100pt;
-  }
-=======
-#email-login {
-    margin-left: 6.5px;
-    margin-bottom: 5px;
+  
 }
-=======
 
-  .email-login{
-    margin-left: 100pt;
-  }
-
-
->>>>>>> 6b4050fd22575e4758fd19d37b7461d7b7320085
-
-#password-login {
-    margin-left: 10px;
+.login-form {
+  width: max-content;
+  white-space: 100px;
 }
-<<<<<<< HEAD
->>>>>>> ff917f56186414bca77817086a2d1bdb1a862dc6
-=======
 
->>>>>>> 6b4050fd22575e4758fd19d37b7461d7b7320085
+#card {
+  width: 300%
+}
+
+.email-login{
+  margin-left: 10px;
+}
+
+.password-login {
+  margin-left: 10px;
+}
+
+.inner-button{
+margin-left: 100%;
+}
+
+h1{
+padding-left: 2%;
+
+}
+
+
+.nav button{
+background-color:  #101010;
+width: 100pt;
+height: 25pt;
+margin-left: 650%;
+}
+
+.dropdown {
+display: inline-block;
+position: relative;
+
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+nav-right: auto;
+padding-left: 5pt;
+width: 200%;
+overflow: auto;
+background-color: #FFFFFF;
+margin-left: 650%;
+
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+.dropdown-content a {
+display: block;
+color: rgb(72, 158, 245);
+padding: 5px;
+text-decoration: none;
+}
+.dropdown-content a:hover {
+color: #FFFFFF;
+background-color: #00A4BD;
+}
+
+.dropdown-content button{
+margin-left: 0%;
+background-color: rgb(72, 158, 245);
+color: #FFFFFF;
+font-size: 12pt;
+}
