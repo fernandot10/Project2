@@ -48,13 +48,13 @@ const submitForm = async (event) => {
   const year = document.querySelector('#year').value.trim();
   const review = document.querySelector('#content').value.trim();
   const cover = uploader.url(`/uploads/${title.split(' ').join('')}-${artist.split(' ').join('')}.jpg`);
-  // const user_id = 
 
   console.log(title, artist, genre, year, cover, review);
 
   if (title && artist && genre && year && cover && review) {
     const response = await fetch('/api/reviews/new-post', {
       method: 'POST',
+      credentials: 'include',    
       body: JSON.stringify({ title, artist, genre, year, cover, review }),
       headers: { 'Content-Type': 'application/json' },
     });

@@ -1,18 +1,16 @@
 const router = require('express').Router();
-const { Album, Reviews } = require('../../models/');
+const { Album, Review } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 // GET route for showing all reviews 
 router.get('/', withAuth, async (req, res) => {
     try {
       // variable for getting all reviews in general
-      const allReviews = await Reviews.findAll({
-        include: [{ model: Album }],
-      });
+      const allAlbumReviews = await Album.findAll();
+
+      console.log(allAlbumReviews);
   
-      const reviews = allReviews.map((project) => project.get({ plain: true }));
-      // rendering reviews on page
-      res.render('reviews', { reviews });
+      res.status(200).json(allAlbumReviews);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -21,15 +19,9 @@ router.get('/', withAuth, async (req, res) => {
   // GET route for showing a specific review
   router.get('/:id', withAuth, async (req, res) => {
     try {
-      const allReviews = await Reviews.findByPk(req.params.id, {
-        include: [{ model: Album }],
-      });
+      const albumReviewData = await Album.findByPk(req.params.id);
   
-      // serialize data so templates can read
-      const review = allReviews.map((project) => project.get({ plain: true }));
-  
-      // pass serialized data into handlebars
-      res.render('review', { review });
+      res.status(200).json(albumReviewData);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -38,25 +30,21 @@ router.get('/', withAuth, async (req, res) => {
   // POST route for creating a new review
   router.post('/new-post', withAuth, async (req, res) => {
     try {
-      // variable for album data
-      const albumData = await Album.create({
+       // variable for album data
+      const albumReviewData = await Album.create({
         title: req.body.title,
         artist: req.body.artist,
         genre: req.body.genre,
         year: req.body.year,
-        cover: req.body.cover
+        cover: req.body.cover,
+        review: req.body.review,
+        user_id: req.session.userId
       })
 
-      console.log()
-      // variable for review data - gets data for album, then data for review
-      const reviewData = await Reviews.create({
-        review: req.body.review,
-        // album_id: albumData.id,
-        // user_id: req.body.user_id,
-      });
-  
-      // show 200 status if successful
-      res.status(200).json(albumData, reviewData);
+      console.log(albumReviewData);
+
+      res.status(200).json(albumReviewData);
+
     } catch (err) {
       res.status(500).json(err);
     }
@@ -68,19 +56,17 @@ router.get('/', withAuth, async (req, res) => {
   router.delete('/:id', withAuth, async (req, res) => {
     try {
       // use .destroy
-      const reviewData = await Reviews.destroy({
+      const albumReviewData = await Album.destroy({
         where: {
           id: req.params.id,
         },
       });
   
       //if no id found gives 404
-      if (!reviewData) {
+      if (!albumReviewData) {
         res.status(404).json('No review found with that id!');
         return;
       }
-  
-      // status 200 if successful res.status(200).json(reviewData);
   } catch (err) {
     res.status(500).json(err)
   }

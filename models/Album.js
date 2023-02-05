@@ -24,12 +24,23 @@ Album.init(
             allowNull: false,
         },
         year: {
-            type: DataTypes.DATE,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         cover: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        review: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
         }
     },
 
