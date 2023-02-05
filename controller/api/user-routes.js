@@ -42,6 +42,7 @@ router.post('/signup', async (req, res) => {
 // POST route for logging in
 router.post('/login', async (req, res) => {
     try {
+        console.log('Are you logging in?')
         const userData = await User.findOne({ where: { email: req.body.email } });
         console.log('made it this far')
         if (!userData) {

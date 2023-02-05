@@ -1,20 +1,49 @@
 const router = require('express').Router();
-const { Album, User } = require('../models/');
+
+const { Album, User  } = require('../models/');
+
 const withAuth = require('../utils/auth');
 
-// GET Route for Homepage
-router.get('/', withAuth, async (req, res) => {
+// GET Route for Landing Page / Login
+router.get('/', async (req, res) => {
   try {
-    const albumData = await Album.findAll({
-      limit: 10,
-      order: [['id', 'DESC']]
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET Route for Homepage
+router.get('/homepage', withAuth, async (req, res) => {
+  try {
+    res.render('homepage', { 
+      logged_in: req.session.logged_in });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/album/:id', async (req, res) => {
+  try {
+    const albumData = await Album.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['email'],
+        },
+      ],
     });
 
-    const albums = albumData.map((project) => project.get({ plain: true }));
+    const Album = albumData.get({ plain: true });
 
-    res.render('homepage', { 
-      albums,
-      logged_in: req.session.logged_in });
+    res.render('album', {
+      ...project,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -29,9 +58,16 @@ router.get('/login', (req, res) => {
 
 });
 
+router.get('/logout', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('logout');
+})
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/homepage');
+    res.redirect('/');
     return;
   }
   res.render('signup');
