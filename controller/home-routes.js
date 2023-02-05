@@ -37,21 +37,14 @@ router.get('/new-post', withAuth, async(req, res) => {
   }
 })
 
-router.get('/album/:id', async (req, res) => {
+router.get('/reviews/:id', async (req, res) => {
   try {
-    const albumData = await Album.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['email'],
-        },
-      ],
-    });
-
-    const Album = albumData.get({ plain: true });
-
-    res.render('album', {
-      ...project,
+    const albumReviewData = await Album.findByPk(req.params.id);
+    
+    const album = albumReviewData.map((album) => album.get({ plain: true }));
+  
+    res.render('review', {
+      album,
       logged_in: req.session.logged_in
     });
   } catch (err) {
