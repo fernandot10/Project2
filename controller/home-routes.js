@@ -16,16 +16,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET Route for Homepage
-router.get('/homepage', withAuth, async (req, res) => {
+// GET Route for dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    res.render('homepage', { 
+    res.render('dashboard', { 
       logged_in: req.session.logged_in });
 
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+router.get('/new-post', withAuth, async(req, res) => {
+  try {
+    res.render('new-post', {
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 router.get('/album/:id', async (req, res) => {
   try {
@@ -64,7 +74,8 @@ router.get('/logout', (req, res) => {
     return;
   }
   res.render('logout');
-})
+});
+
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');

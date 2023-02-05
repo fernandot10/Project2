@@ -12,15 +12,11 @@ Review.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        AlbumId: {
+        album_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        UserId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        rating: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
