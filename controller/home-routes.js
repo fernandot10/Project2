@@ -41,7 +41,7 @@ router.get('/reviews/:id', async (req, res) => {
   try {
     const albumReviewData = await Album.findByPk(req.params.id);
     
-    const album = albumReviewData.map((album) => album.get({ plain: true }));
+    const album = albumReviewData.get({ plain: true });
   
     res.render('review', {
       album,
