@@ -23,9 +23,13 @@ Album.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        dateRelease: {
+        year: {
             type: DataTypes.DATE,
             allowNull: false
+        },
+        cover: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     },
 

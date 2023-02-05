@@ -27,6 +27,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/new-post', withAuth, async(req, res) => {
+  try {
+    res.render('new-post', {
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.get('/album/:id', async (req, res) => {
   try {
     const albumData = await Album.findByPk(req.params.id, {
@@ -64,7 +74,8 @@ router.get('/logout', (req, res) => {
     return;
   }
   res.render('logout');
-})
+});
+
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');

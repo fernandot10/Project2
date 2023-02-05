@@ -36,18 +36,27 @@ router.get('/', withAuth, async (req, res) => {
   });
   
   // POST route for creating a new review
-  router.post('/', withAuth, async (req, res) => {
+  router.post('/new-post', withAuth, async (req, res) => {
     try {
-      // variable for album review data - gets data for album, then data for review
+      // variable for album data
+      const albumData = await Album.create({
+        title: req.body.title,
+        artist: req.body.artist,
+        genre: req.body.genre,
+        year: req.body.year,
+        cover: req.body.cover
+      })
+
+      console.log()
+      // variable for review data - gets data for album, then data for review
       const reviewData = await Reviews.create({
-        rating: req.body.rating,
-        comment: req.body.comment,
-        album_id: req.body.album_id,
-        user_id: req.body.user_id,
+        review: req.body.review,
+        // album_id: albumData.id,
+        // user_id: req.body.user_id,
       });
   
       // show 200 status if successful
-      res.status(200).json(reviewData);
+      res.status(200).json(albumData, reviewData);
     } catch (err) {
       res.status(500).json(err);
     }
