@@ -20,23 +20,25 @@
       margin-bottom: 0;
       border-radius: 0;
       text-align: ;
+      background-color: black;
+    }
+    .title {
+      color: #00FFFF;
     }
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
       height: 10px;
-      
     }
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+      background-color: #00FFFF;
       height: 170%;
       text-align: right;
     }
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
-      color: white;
+      background-color: #1f0038;
       padding: 15px;
     }
     button {
@@ -115,7 +117,7 @@
         {{/if}}
         <div class="dropdown-content">
            <div class="cards">
-    <h3 class="banner">Please login</h3>
+    <h3 class="title">Please login</h3>
     <form id="login-form" class="comment-body">
 
         <label for="email-login"></label>
@@ -138,7 +140,7 @@
 </div>
 </div>
 
-  <h1>Review4U</h1>
+  <h1 class="title">Review4U</h1>
   </header>
 
   <main>{{{ body }}}</main>
