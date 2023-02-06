@@ -1,14 +1,13 @@
-<section>
-    <h2>Your Reviews</h2>
+<h2>Your Reviews</h2>
+<div class="row">
     {{#each albums as |album|}}
-    <div class="cards">
-    <div class="banner">
-        <h4><a class="link" href="/reviews/{{album.id}}"><img src="{{album.cover}}"></a></h4>
-        <p>{{album.title}} by {{album.artist}}</p>
-    </div>
-    <p class="comment-body">{{album.review}}</p>
+    <div class="card col-sm-3 m-3 p-3" style="width: 20%">
+        <h4><a class="link" href="/reviews/{{album.id}}"><img class="card-img-top" src="{{album.cover}}"></a></h4>
+        <div class="card-body"><h5 class="card-title">{{album.title}} by {{album.artist}}</h5>
+            <p class="card-text">{{album.review}}</p>
+        </div>    
     </div>
     {{/each}}
-</section>
+</div>
 
 <button type="submit" class="button"><a class="link" href="/new-post">+ New Review</a></button>
