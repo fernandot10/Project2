@@ -1,12 +1,14 @@
-{{#if reviews.length}}
-
 <section>
     <h2>Your Reviews</h2>
-    {{#each reviews as |review|}}
-    {{> dashboard-postinfo post}}
+    {{#each albums as |album|}}
+    <div class="cards">
+    <div class="banner">
+        <h4><a class="link" href="/reviews/{{album.id}}"><img src="{{album.cover}}"></a></h4>
+        <p>{{album.title}} by {{album.artist}}</p>
+    </div>
+    <p class="comment-body">{{album.review}}</p>
+    </div>
     {{/each}}
 </section>
-
-{{/if}}
 
 <button type="submit" class="button"><a class="link" href="/new-post">+ New Review</a></button>

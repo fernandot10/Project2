@@ -14,8 +14,7 @@ const seedDatabase = async () => {
 
     for (const album of albumData) {
         await Album.create({
-            ...album,
-            user_id: users[Math.floor(Math.random() * users.length)].id,
+            ...album
         });
     }
 

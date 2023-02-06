@@ -19,7 +19,18 @@ router.get('/', async (req, res) => {
 // GET Route for dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
+    console.log("is it trying?")
+    const albumReviewData = await Album.findAll({
+      where: {
+        user_id: req.session.userId
+      }
+    });
+    console.log("it tried")
+
+    const albums = albumReviewData.map((gallery) => gallery.get({ plain: true }))
+    
     res.render('dashboard', { 
+      albums,
       logged_in: req.session.logged_in });
 
   } catch (err) {
@@ -37,7 +48,7 @@ router.get('/new-post', withAuth, async(req, res) => {
   }
 })
 
-router.get('/reviews/:id', async (req, res) => {
+router.get('/reviews/:id', withAuth, async (req, res) => {
   try {
     const albumReviewData = await Album.findByPk(req.params.id);
     
