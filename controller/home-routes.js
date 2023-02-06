@@ -7,13 +7,16 @@ const withAuth = require('../utils/auth');
 // GET Route for Landing Page / Login
 router.get('/', async (req, res) => {
   try {
-    if (!req.session.logged_in) {
+    if (!req.session.loggedIn) {
       res.redirect('/login');
       return;
     }
   } catch (err) {
     res.status(500).json(err);
   }
+  res.render('dashboard', { 
+    loggedIn: req.session.loggedIn });
+
 });
 
 // GET Route for dashboard
@@ -31,7 +34,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     
     res.render('dashboard', { 
       albums,
-      logged_in: req.session.logged_in });
+      loggedIn: req.session.loggedIn });
 
   } catch (err) {
     res.status(500).json(err);
@@ -41,7 +44,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/new-post', withAuth, async(req, res) => {
   try {
     res.render('new-post', {
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     res.status(500).json(err);
@@ -56,7 +59,7 @@ router.get('/reviews/:id', withAuth, async (req, res) => {
   
     res.render('review', {
       album,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     res.status(500).json(err);
@@ -64,24 +67,26 @@ router.get('/reviews/:id', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-  res.render('login');
+  res.render('login', {
+    loggedIn: req.session.loggedIn
+  });
 
 });
 
-router.get('/logout', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('logout');
-});
+// router.get('/logout', (req, res) => {
+//   if (!req.session.loggedIn) {
+//     res.redirect('/login');
+//     return;
+//   }
+//
+// });
 
 router.get('/signup', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }

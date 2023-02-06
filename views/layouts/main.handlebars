@@ -130,11 +130,10 @@
           <li><a href="/">Home</a></li>
           <li><a href="/dashboard">UReview Dashboard</a></li>
           {{#if loggedIn}}
-          <li><a id="logout" href="#">Logout</a></li>
+          <li><button id="logout">Logout</button></li>
           {{else}}
           <div class="dropdown">
             <li><a><button>Login</button></a></li>
-            {{/if}}
             <div class="dropdown-content">
               <div class="cards">
                 <h3 class="title">Please login</h3>
@@ -150,7 +149,7 @@
               <div>
                 <button href="/login" type="submit" class="button">Login</button>
                 <a class="login-now" href="/signup">Signup</a>
-
+              {{/if}}
               </div>
               </form>
             </div>
