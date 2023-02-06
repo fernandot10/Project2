@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET Route for Homepage
-router.get('/homepage', withAuth, async (req, res) => {
+// GET Route for dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    res.render('homepage', { 
+    res.render('dashboard', { 
       logged_in: req.session.logged_in });
 
   } catch (err) {
@@ -27,21 +27,24 @@ router.get('/homepage', withAuth, async (req, res) => {
   }
 });
 
-router.get('/album/:id', async (req, res) => {
+router.get('/new-post', withAuth, async(req, res) => {
   try {
-    const albumData = await Album.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['email'],
-        },
-      ],
+    res.render('new-post', {
+      logged_in: req.session.logged_in
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
-    const Album = albumData.get({ plain: true });
-
-    res.render('album', {
-      ...project,
+router.get('/reviews/:id', async (req, res) => {
+  try {
+    const albumReviewData = await Album.findByPk(req.params.id);
+    
+    const album = albumReviewData.get({ plain: true });
+  
+    res.render('review', {
+      album,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -64,7 +67,8 @@ router.get('/logout', (req, res) => {
     return;
   }
   res.render('logout');
-})
+});
+
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');

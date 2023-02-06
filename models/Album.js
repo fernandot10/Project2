@@ -23,9 +23,24 @@ Album.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        dateRelease: {
-            type: DataTypes.DATE,
+        year: {
+            type: DataTypes.INTEGER,
             allowNull: false
+        },
+        cover: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        review: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
         }
     },
 
