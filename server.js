@@ -12,7 +12,7 @@ const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // enable local server at PORT 3001
 const app = express();
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3001;
 
 // create session and implement cookies
 const sess = {
