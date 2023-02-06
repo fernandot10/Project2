@@ -4,34 +4,39 @@
         "title": "DAMN",
         "artist": "Kendrick Lamar",
         "genre": "Hip-hop",
-        "dateRelease": "2017"
+        "year": "2017",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/5/51/Kendrick_Lamar_-_Damn.png",
+        "review": "I liked it!",
+        "user_id": "4"
     },
     {
         "id": "2",
-        "title": "The Slow Rush",
-        "artist": "Tame Impala",
-        "genre": "Alternative",
-        "dateRelease": "2018"
+        "title": "Renaissance",
+        "artist": "Beyoncé",
+        "genre": "Pop/R&B",
+        "year": "2022",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Beyonc%C3%A9_-_Renaissance.png/220px-Beyonc%C3%A9_-_Renaissance.png",
+        "review": "Awesome!",
+        "user_id": "4"
     },
     {
         "id": "3",
-        "title": "We Were Cowboys",
-        "artist": "Kameron marlowe",
-        "genre": "Country",
-        "dateRelease": "2019"
+        "title": "Hold the Girl",
+        "artist": "Rina Sawayama",
+        "genre": "Indie Pop",
+        "year": "2022",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/e/eb/Rina_Sawayama_-_Hold_the_Girl.png",
+        "review": "I loved it!",
+        "user_id": "4"
     },
     {
         "id": "4",
-        "title": "Hysteria",
-        "artist": "Def Leppard",
-        "genre": "Rock",
-        "dateRelease": "2020"
-    },
-    {
-        "id": "5",
-        "title": "Alone At Prom",
-        "artist": "Tory Lanez",
-        "genre": "R&B/Soul",
-        "dateRelease": "2021"
+        "title": "Dynasty",
+        "artist": "Rina Sawayama",
+        "genre": "Indie Pop",
+        "year": "2020",
+        "cover": "https://static.wikia.nocookie.net/rina/images/e/e2/Rina_Sawayama_-_Sawayama_-_Cover.jpg/revision/latest?cb=20200709021328",
+        "review": "Good stuff!",
+        "user_id": "4"
     }
-  ]
+]
