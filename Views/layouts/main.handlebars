@@ -22,66 +22,86 @@
       text-align: ;
       background-color: black;
     }
+
     .title {
       color: #00FFFF;
     }
+
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
       height: 10px;
     }
+
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #00FFFF;
       height: 170%;
       text-align: right;
     }
+
     /* Set black background color, white text and some padding */
     footer {
       background-color: #1f0038;
       padding: 15px;
     }
+
     button {
       display: block;
-      width: 160pt;
+      width: 125pt;
       height: 40pt;
-      margin-top: 20px;
-      font-size: 16pt;
+      padding-top: 15px;
+      color: #a7a5a5;
+      height: 170%;
+      text-align: center;
+      padding-right: 47%;
+      border: none;
     }
+
+    button:hover {
+      color: #f1f1f1;
+    }
+
     .container {
-    padding: 80px 120px;
-  }
-  .person {
-    border: 10px solid transparent;
-    margin-bottom: 25px;
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-  }
-  .person:hover {
-    border-color: #f1f1f1;
-  }
-  .carousel-inner img {
-   
-    width: 60%; /* Set width to 100% */
-    height: 20%;
-    margin-left: auto;
-    margin-right: auto;
-  
-  }
-  .carousel-caption h3 {
-    color: #fff !important;
-  }
+      padding: 80px 120px;
+    }
+
+    .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+    }
+
+    .person:hover {
+      border-color: #f1f1f1;
+    }
+
+    .carousel-inner img {
+      width: 60%;
+      /* Set width to 100% */
+      height: 20%;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    .carousel-caption h3 {
+      color: #fff !important;
+    }
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
+
       .row.content {
         height: auto;
       }
     }
+
     @media (max-width: 600px) {
       .carousel-caption {
         display: none;
@@ -94,51 +114,51 @@
 
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-</button>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-left">
-      <li class="active">
-        <li><a href="/">Home</a></li>
-        <li><a href="/dashboard">UReview Dashboard</a></li>
-        {{#if loggedIn}}
-        <li><a id="logout" href="#">Logout</a></li>
-        {{else}}
-        <div class="dropdown">
-        <li><a><button>Login</button></a></li>
-        {{/if}}
-        <div class="dropdown-content">
-           <div class="cards">
-    <h3 class="title">Please login</h3>
-    <form id="login-form" class="comment-body">
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+          <li><a href="/">Home</a></li>
+          <li><a href="/dashboard">UReview Dashboard</a></li>
+          {{#if loggedIn}}
+          <li><a id="logout" href="#">Logout</a></li>
+          {{else}}
+          <div class="dropdown">
+            <li><a><button>Login</button></a></li>
+            {{/if}}
+            <div class="dropdown-content">
+              <div class="cards">
+                <h3 class="title">Please login</h3>
+                <form id="login-form" class="comment-body">
 
-        <label for="email-login"></label>
-        <input type="text" placeholder="Email Address" class="comment-input" id="email-login"/>
-</div>
-<div>
-    <label for="password-login"></label>
-    <input type="text" placeholder="Password" class="comment-input" id="password-login"/>
-</div>
-<div>
-    <button href="/login" type="submit" class="button" >Login</button>
-    <a class="login-now" href="/signup">Signup</a>
+                  <label for="email-login"></label>
+                  <input type="text" placeholder="Email Address" class="comment-input" id="email-login" />
+              </div>
+              <div>
+                <label for="password-login"></label>
+                <input type="text" placeholder="Password" class="comment-input" id="password-login" />
+              </div>
+              <div>
+                <button href="/login" type="submit" class="button">Login</button>
+                <a class="login-now" href="/signup">Signup</a>
 
-</div>
-    </form>
-</div>
-      </ul>
-    </nav>
+              </div>
+              </form>
+            </div>
+        </ul>
+  </nav>
   </div>
-</div>
-</div>
+  </div>
+  </div>
 
   <h1 class="title">Review4U</h1>
   </header>
