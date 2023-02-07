@@ -33,14 +33,11 @@ Welcome to Review4U! This web application allows you to express your thoughts on
   - Run the seed data
   - Source the schema
   - Please run ```npm start``` or ```npm run watch``` to run the server
-  - Please visit [Heroku](*insert heroku link here*) to view our deployed application
+  - Please visit [Heroku](https://music-review-4-u.herokuapp.com/) to view our deployed application
   
-  ## Usage
-  *insert video walk-through here*
- 
-  ## Testing
-  
-  
+  ## Screenshot
+![image](./assets/review4u.png)
+
   ## License 
 ![MIT](https://img.shields.io/badge/license-MIT-blue/style=plastic)
   

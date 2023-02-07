@@ -63,6 +63,9 @@ nav-right: auto;
 padding-left: 5pt;
 width: 200%;
 overflow: auto;
+background-color: #3b006f;
+/* margin-left: 650%; */
+z-index: 1;
 /* margin-left: 650%; */
 z-index: 1;
 }
